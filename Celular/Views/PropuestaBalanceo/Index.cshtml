@@ -1,0 +1,93 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos del Portafolio</h3>
+                </div>
+                <div class="box-body" id="dvDatos">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-2"><label class="col-sm-12 nopadding">Nombre</label></div>
+                            <div class="col-sm-2"><label class="col-sm-12 nobold nopadding" id="lblNombre"></label></div>
+                            <div class="col-sm-2"><label class="col-sm-12 nopadding">Prioridad</label></div>
+                            <div class="col-sm-2"><label class="col-sm-12 nobold nopadding" id="lblPrioridad"></label></div>
+                            <div class="col-sm-2"><label class="col-sm-12 nopadding">Estado</label></div>
+                            <div class="col-sm-2"><label class="col-sm-12 nobold nopadding" id="lblEstado"></label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"><label class="col-sm-12 nopadding">Responsable</label></div>
+                            <div class="col-sm-10"><label class="col-sm-12 nobold nopadding" id="lblResponsable"></label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"><label class="col-sm-12 nopadding">Descripcion</label></div>
+                            <div class="col-sm-10"><label class="col-sm-12 nobold nopadding" id="lblDescrpcion"></label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="drSolicitudes">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista de Solicitudes</h3>
+                </div>
+                <div class="box-body" id="dvTablaSolicitudes" style="overflow-x:auto">
+                </div>
+                <div class="box-footer">
+                    <button type="button" onclick="grabarBalanceo()" class="btn btn-info pull-right">Grabar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista de Recursos</h3>
+                </div>
+                <div class="box-body" id="dvTablaRecursos" style="overflow-x:auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="myModal1" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog  modal-sm">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:cerrarPopUp();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title">Confirmación</h4>
+            </div>
+            <div class="modal-body" style="max-height:100px;overflow-x:auto">
+                <div class="text-center">¿Generar Propuesta de Balanceo?</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnDenegar" title="Cancelar" onmousedown="javascript:redirigirInicio();" class="btn btnDefault btn-sm btn-default">Cancelar</button>
+                <button type="button" id="btnConfirmar" title="Aceptar" onmousedown="javascript:iniciarBalanceo();" class="btn btnDefault btn-sm btn-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="id_portafolio" value="@Session["portafolio"].ToString()" />
+<script src="~/Content/vendor.min.js"></script>
+<script src="~/Scripts/Views/PropuestaBalanceo/Index.js"></script>
+<script>
+    /*
+
+    */
+</script>
