@@ -165,6 +165,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AsignarController.cs" />
+    <Compile Include="Controllers\SolicitudController.cs" />
     <Compile Include="Controllers\EjemploController.cs" />
     <Compile Include="Controllers\GestionPortafolioController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
@@ -175,6 +176,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Asignar.cs" />
+    <Compile Include="Models\Solicitud.cs" />
     <Compile Include="Models\Inicio.cs" />
     <Compile Include="Models\DatosGenerales.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -7343,6 +7345,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Views\Asignar\AgregarEditar.js" />
     <Content Include="Scripts\Views\Asignar\Index.js" />
+    <Content Include="Scripts\Views\Solicitud\Index.js" />
     <Content Include="Scripts\Views\Ejemplo\Index.js" />
     <Content Include="Scripts\Views\GestionPortafolio\Index.js" />
     <Content Include="Scripts\Views\Inicio\Index.js" />
@@ -7367,6 +7370,7 @@
     <Content Include="Views\SeleccionPortafolio\Index.cshtml" />
     <Content Include="Views\GestionPortafolio\Index.cshtml" />
     <Content Include="Views\Ejemplo\Index.cshtml" />
+    <Content Include="Views\Solicitud\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adjuntos\" />
