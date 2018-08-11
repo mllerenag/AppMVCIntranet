@@ -165,6 +165,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AsignarController.cs" />
+    <Compile Include="Controllers\ProgramaController.cs" />
     <Compile Include="Controllers\SolicitudController.cs" />
     <Compile Include="Controllers\EjemploController.cs" />
     <Compile Include="Controllers\GestionPortafolioController.cs" />
@@ -7371,6 +7372,7 @@
     <Content Include="Views\GestionPortafolio\Index.cshtml" />
     <Content Include="Views\Ejemplo\Index.cshtml" />
     <Content Include="Views\Solicitud\Index.cshtml" />
+    <Content Include="Views\Programa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adjuntos\" />
