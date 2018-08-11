@@ -1,0 +1,300 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+    Programa
+    <small>Administrar Programa</small>
+    </h1>
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li><a href="#">Programa</a></li>
+    <li class="active">Administrar Programa</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Filtros de Búsqueda</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                    <div class="box-body">
+                    <div class="form-horizontal">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Codigo</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="vl_txtCodigo" placeholder="Codigo">
+                        </div>
+                        <label  class="col-sm-2 control-label"></label>
+                    <div class="col-sm-2">
+                           <!-- <select id="vl_Categoria" class="form-control">
+                                <option value="0">Seleccione</option>
+                            </select>-->
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Fecha Inicio</label>
+                        <div class="col-sm-2">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right dtpicker" id="dtFechaIni">
+                            </div>
+                        </div>
+                        <label  class="col-sm-2 control-label">Fecha Fin</label>
+                        <div class="col-sm-2">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right dtpicker" id="dtFechaFin">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                    @Html.Hidden("UrlServicioSeleccion", Url.Action("IrAPropuesta", "SeleccionPortafolio"))
+                    <button type="button" onclick="buscarProgramas()" class="btn btn-info pull-right">Buscar</button>
+                    <button type="button" onclick="PopUpPrograma(0)" style="margin-left:10px;margin-right:10px" class="btn btn-success pull-right">Nuevo Programa</button>
+                    </div>
+                    <!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista de Programa</h3>
+                </div>
+                <div class="box-body" id="dvTablaProgramas" style="overflow-x:auto">
+                </div>
+
+            </div>
+        </div>
+    </div
+</section>
+
+<div id="myModal1" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_Data();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title" id="h4Programa">Nuevo Programa</h4>
+            </div>
+            <div class="modal-body" style="max-height:500px;overflow-x:auto">
+                <div class="row">
+                <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Nombre:</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="txtNombre" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label col-md-3">Fecha Inicio</label>
+                        <div class="col-md-3">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right dtpicker" id="dtFechaIniEdit">
+                            </div>
+                        </div>
+                        <label  class="control-label col-md-3">Fecha Fin</label>
+                        <div class="col-md-3">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right dtpicker" id="dtFechaFinEdit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Prioridad:</label>
+                        <div class="col-md-3">
+                            <select id="cbo_PrioridadPopUp" class="form-control">
+                                <option>Seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Responsable:</label>
+                        <div class="col-md-3">
+                            <label class="control-label nobold nopadding" id="lblResponsable"></label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="hidden" id="hfResponsable" value="0" />
+                            <button type="button" id="btnResponsable" onmousedown="javascript:ResponsablePrincipal();" class="btn btnDefault btn-sm btn-default">Actualizar</button>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Descripcion:</label>
+                    <div class="col-md-9">
+                        <textarea id="txtDescripcion" class="form-control" style="height:100px"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="button" id="btnGrabar" style="float:right" title="Grabar" onmousedown="javascript:GrabarDatos();" class="btn btnDefault btn-sm btn-success">Grabar</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <button type="button" id="btnAgregarProyectos" title="Agregar" onmousedown="javascript:AgregarProyecto();" style="float:right" class="btn btnDefault btn-sm btn-info">Agregar</button>
+                            <h3 class="box-title">Proyectos</h3>
+                        </div>
+                        <div class="box-body" id="dvProyectos" style="overflow-x:auto;max-height:350px">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="myModal2" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_Responsable();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title" id="h4Responsable">Seleccionar Responsable</h4>
+            </div>
+            <div class="modal-body" style="max-height:500px;overflow-x:auto">
+                <div class="row">
+                <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Nombre:</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="txtNombreResponsable_Buuscar" />
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" id="btnAgregarProyectos" title="Buscar" onmousedown="javascript:ReloadResponsables();" style="float:right" class="btn btnDefault btn-sm btn-info">Buscar</button>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Responsables</h3>
+                        </div>
+                        <div class="box-body" id="dvResponsables" style="overflow-x:auto;max-height:300px">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal3" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_Proyecto();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title" id="h4Responsable">Asociar Proyecto</h4>
+            </div>
+            <div class="modal-body" style="max-height:500px;overflow-x:auto">
+                <div class="row">
+                <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Nombre:</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="txtNombrProyecto_Buscar" />
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" id="btnAgregarProyectos" title="Buscar" onmousedown="javascript:ReloadProyectos();" style="float:right" class="btn btnDefault btn-sm btn-info">Refrescar</button>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Proyectos</h3>
+                        </div>
+                        <div class="box-body" id="dvProyectosDisponibles" style="overflow-x:auto;max-height:300px">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal4" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog  modal-sm">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_ConfirmarProyecto();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title">Confirmación</h4>
+            </div>
+            <div class="modal-body" style="max-height:100px;overflow-x:auto">
+                <div class="text-center" id="dvConfirmarProyecto">¿Esta seguro de Desasociar el Proyecto?</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnDenegar" title="Cancelar" onmousedown="javascript:CerrarPopUp_ConfirmarProyecto();" class="btn btnDefault btn-sm btn-default">Cancelar</button>
+                <button type="button" id="btnConfirmar" title="Aceptar" onmousedown="javascript:DesAsociarProyecto();" class="btn btnDefault btn-sm btn-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="myModal7" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog  modal-sm">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_ConfirmarPrograma();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title">Confirmación</h4>
+            </div>
+            <div class="modal-body" style="max-height:100px;overflow-x:auto">
+                <div class="text-center" id="dvConfirmarPrograma">¿Esta seguro de Anular el Programa?</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnDenegar" title="Cancelar" onmousedown="javascript:CerrarPopUp_ConfirmarPrograma();" class="btn btnDefault btn-sm btn-default">Cancelar</button>
+                <button type="button" id="btnConfirmar" title="Aceptar" onmousedown="javascript:AnularPrograma();" class="btn btnDefault btn-sm btn-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/vendor.min.js"></script>
+<script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/Views/Programa/Index.js"></script>
