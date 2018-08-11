@@ -39,7 +39,13 @@ function buscarProgramas(){
     var codigo = $("#vl_txtCodigo").val();
     var fechaini =$("#dtFechaIni").val();
     var fechafin = $("#dtFechaFin").val();
-    
+
+    if (fechaini != "" && fechafin != ""){
+        if(Date.parse(fechafin) < Date.parse(fechaini)){
+            fc_MsjError("La Fecha Inicio Programa no puede ser mayor a la Fecha Fin Programa");
+            return;
+        }
+    }
     var url_ = $("#UrlServicio").val() + '/api/programa/BuscarProgramas';
     var entidad_ = { codigo: codigo, fecha_creacion_ini : fechaini, fecha_creacion_fin : fechafin}
     $.ajax({
@@ -123,16 +129,23 @@ function retornarRegistro(resultado){
         retorno += '<td>' + resultado.prioridad +'</td>';
         retorno += '<td>' + resultado.co_estado +'</td>';
         retorno += '<td>'; 
-        retorno +=     '<button type="button" onclick="PopUpPrograma(' +  parametro + ');"  style="margin-left:10px;margin-right:10px;"class="btn btn-warning">Editar</button>'; 
-        retorno +=     '<button type="button" onclick="PopUpConfirmarPrograma(' +  parametro + ',\'' + resultado.codigo +  '\');" class="btn btn-danger">Anular</button>'; 
+        retorno +=     '<button type="button" onclick="PopUpPrograma(' +  parametro + ',\'' + resultado.co_estado +  '\');"  style="margin-left:10px;margin-right:10px;"class="btn btn-warning">Editar</button>'; 
+        retorno +=     '<button type="button" onclick="PopUpConfirmarPrograma(' +  parametro + ',\'' + resultado.codigo +  '\''+',\'' + resultado.co_estado +  '\');" class="btn btn-danger">Anular</button>'; 
         retorno += '</td>';
         retorno += '</tr>';
     }
     return retorno;
 }
 
-function PopUpPrograma(parametro){
+function PopUpPrograma(parametro, co_estado){
 
+    if(co_estado == "En Ejecución"){
+        fc_MsjError("No es posible Editar porque el programa se encuentra En Ejecución");
+        return;
+    }else     if(co_estado == "Finalizado"){
+        fc_MsjError("No es posible Editar porque el programa se encuentra Finalizado");
+        return;
+    }
     var url_ = $("#UrlServicio").val() + '/api/programa/PopUpPrograma';
     var entidad_ = { codigo_programa: parametro}
     $.ajax({
@@ -496,7 +509,15 @@ function DesAsociarProyecto(){
 }
 
 
-function PopUpConfirmarPrograma(programa, codigo){
+function PopUpConfirmarPrograma(programa, codigo,co_estado){
+
+    if(co_estado == "En Ejecución"){
+        fc_MsjError("No es posible Anular porque el programa se encuentra En Ejecución");
+        return;
+    }else     if(co_estado == "Finalizado"){
+        fc_MsjError("No es posible Anular porque el programa se encuentra Finalizado");
+        return;
+    }
 
     $("#dvConfirmarPrograma").html("¿Está seguro de anular el Programa " + codigo + "?");
     $("#myModal7").modal('show');
@@ -541,13 +562,21 @@ function GrabarDatos(){
     var fe_fin = $("#dtFechaFinEdit").val();
     var usr = $("#id_usuario").val();
 
+
+    if (fe_inicio != "" && fe_fin != ""){
+        if(Date.parse(fe_fin) < Date.parse(fe_inicio)){
+            fc_MsjError("La Fecha Inicio Programa no puede ser mayor a la Fecha Fin Programa");
+            return;
+        }
+    }
+
     if(nombre.trim() == ""){
         fc_MsjError("Campo Obligatorio : Nombre");
         return;
     }else if(prioridad.trim() == ""){
         fc_MsjError("Campo Obligatorio : Prioridad");
         return;
-    }else if(responsable1.trim() == ""){
+    }else if(responsable1.trim() == "" || responsable1.trim() == "0"){
         fc_MsjError("Campo Obligatorio : Responsable");
         return;
     }else if(fe_inicio.trim() == ""){
@@ -556,7 +585,7 @@ function GrabarDatos(){
     }else if(fe_fin.trim() == ""){
         fc_MsjError("Campo Obligatorio : Fecha Fin");
         return;
-    }
+     }
     var url_ = $("#UrlServicio").val() + '/api/programa/ActualizarPrograma';
     var entidad_ = { nid_programa : nid_programa, no_nombre : nombre, 
         nid_prioridad : prioridad, nid_responsable :  responsable1,
@@ -583,5 +612,7 @@ function GrabarDatos(){
             fc_MsjError('001 - Ocurrio un error');
         }
     });
+
+
 }
 

@@ -7346,6 +7346,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Views\Asignar\AgregarEditar.js" />
     <Content Include="Scripts\Views\Asignar\Index.js" />
+    <Content Include="Scripts\Views\Programa\Index.js" />
     <Content Include="Scripts\Views\Solicitud\Index.js" />
     <Content Include="Scripts\Views\Ejemplo\Index.js" />
     <Content Include="Scripts\Views\GestionPortafolio\Index.js" />
