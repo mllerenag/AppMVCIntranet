@@ -180,6 +180,8 @@ function DatosPopUp(objeto){
     nid_programa = objeto.nid_programa;
     if(nid_programa == null || nid_programa == 0){
         $("#txtNombre").val("");
+        $("#dtFechaIniEdit").val("");
+        $("#dtFechaFinEdit").val("");
         $("#cbo_PrioridadPopUp").val("");
         $("#lblResponsable").html("");
         $("#hfResponsable").val("0");
