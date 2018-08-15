@@ -7333,6 +7333,8 @@
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
     <None Include="Properties\PublishProfiles\Publicacion_MVC_MOvil.pubxml" />
+    <None Include="Properties\PublishProfiles\webindra - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\webindra - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

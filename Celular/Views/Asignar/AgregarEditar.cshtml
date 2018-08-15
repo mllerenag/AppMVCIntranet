@@ -1,0 +1,176 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<head>
+    <title>Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="~/images/favicon.png">
+    <link href="~/Content/css_Demo.css" rel="stylesheet" />
+</head>
+<body>
+    @*<main role="main" class="container-fluid">*@
+        @Html.Hidden("iCodUsuario", (object)ViewBag.iCodUsuario)
+        @Html.Hidden("hdiCodTarjeta", "")
+        @Html.Hidden("AgregarEditar", Url.Action("AgregarEditar", "Asignar"))
+
+        <input type="hidden" id="UrlServicio" value="@System.Configuration.ConfigurationManager.AppSettings["UrlServicio"]" />
+        <input type="hidden" id="UrlServicioLogin" value="@System.Configuration.ConfigurationManager.AppSettings["UrlServicioLogin"]" />
+        <h3>Programas / Demo <button id="btnAgregar" type="button" class="btn btn-danger btn-circle btn-xl" data-toggle="modal" data-target="#modalAgregar"><span class="fas fa-plus-circle"></span></button></h3>
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Visitas - Filtros de busqueda
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col-sm-4 col-lg-4 form-group input-field">
+                                    <input type="text" class="form-control" id="txtNroDocResponsable">
+                                    <label for="txtNroDocResponsable">Nro. Doc. Responsable</label>
+                                </div>
+                                <div class="col-sm-4 col-lg-4 form-group input-field">
+                                    <input type="text" class="form-control" id="txtNombreResponsable">
+                                    <label for="txtNombreResponsable">Nombre Responsable</label>
+                                </div>
+                                <div class="col-sm-4 col-lg-4 form-group input-field">
+                                    <input type="text" class="form-control" id="txtNroCelular">
+                                    <label for="txtNroCelular">Nro Celular</label>
+                                </div>
+                                @*<div class="col-sm-3 form-group" style="">
+                                    <button type="button" id="btnBuscar" class="btn btn-primary"><span class="fas fa-search"></span> Buscar</button>
+                                </div>*@
+
+                            </div>
+                            <div class="form-row">
+                                <div class="col-sm-4 col-lg-4 form-group input-field">
+                                    <input type="text" class="form-control" id="txtNroDocPosecion">
+                                    <label for="txtNroDocPosecion">Nro. Doc. Adquiriente</label>
+                                </div>
+                                <div class="col-sm-4 col-lg-4 form-group input-field">
+                                    <input type="text" class="form-control" id="txtNombrePosecion">
+                                    <label for="txtNombrePosecion">Nombre Adquiriente</label>
+                                </div>
+                                <div class="col-sm-4 col-lg-4 form-group input-field">
+                                    <select class="custom-select" id="ddlEstado">
+                                        <option value="">--Seleccionar--</option>
+                                        <option value="1">ASIGNADO</option>
+                                        <option value="2">DEVUELTO</option>
+                                        <option value="3">REPOSICION</option>
+                                    </select>
+                                    <label for="ddlEstado">Estado</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <table id="tblAsignacion" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="font-size: 10.7pt" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDevoluvion" tabindex="-1" role="dialog" aria-labelledby="modalDevoluvion" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Devolución de Equipo</h5>
+                    </div>
+                    <div class="modal-body">
+                        @*<form>*@
+                        <div class="form-row">
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtDniResponsableDev" maxlength="8">
+                                <label for="txtDniResponsableDev">DNI</label>
+                            </div>
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtNombreResponsableDev" disabled>
+                                <label for="txtNombreResponsableDev">Nombre</label>
+                            </div>
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtApePaternoRespDev" disabled>
+                                <label for="txtApePaternoRespDev">Apellido Paterno</label>
+                            </div>
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtApeMaternoRespDev" disabled>
+                                <label for="txtApeMaternoRespDev">Apellido Materno</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtNroCelularDev">
+                                <label for="txtNroCelularDev">Nro Celular</label>
+                            </div>
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtPlanDev" disabled>
+                                <label for="txtPlanDev">Plan</label>
+                            </div>
+                            <div class="col-sm-2 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtGigasDev" disabled>
+                                <label for="txtGigasDev">Cant. Gigas</label>
+                            </div>
+                            <div class="col-sm-2 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtMinutosDev" disabled>
+                                <label for="txtMinutosDev">Minutos</label>
+                            </div>
+                            <div class="col-sm-2 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtMsjDev" disabled>
+                                <label for="txtMsjDev">Mensajes</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtNroIMEIDev" maxlength="15">
+                                <label for="txtNroIMEIDev">Nro IMEI</label>
+                            </div>
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtMarcaDev" disabled>
+                                <label for="txtMarcaDev">Marca</label>
+                            </div>
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtModeloDev" disabled>
+                                <label for="txtModeloDev">Modelo</label>
+                            </div>
+                            <div class="col-sm-3 form-group input-field not-empty">
+                                <input type="text" class="form-control" id="txtEstadoDev" disabled>
+                                <label for="txtEstadoDev">Estado</label>
+                            </div>
+
+                        </div>
+                        <div class="form-row">
+
+                            <div class="col-sm-12" id="divTableAccesorio">
+                                
+                            </div>
+                        </div>
+
+                        @*</form>*@
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnCancelarDevolucion" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="btnAceptarDevolucion" class="btn btn-primary">Devolver</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>    
+</body>
+<script src="~/Content/vendor.min.js"></script>
+<script src="~/Scripts/Views/Asignar/Index.js"></script>
+

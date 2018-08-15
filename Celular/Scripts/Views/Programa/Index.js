@@ -31,7 +31,7 @@ function buscarProgramas(){
     retorno += '<th>Responsable</th>';
     retorno += '<th>Prioridad</th>';
     retorno += '<th>Estado</th>';
-    retorno += '<th>Acciones</th>';
+    retorno += '<th style="min-width:150px">Acciones</th>';
     retorno += '</thead>';
     retorno += '<tbody>';
 

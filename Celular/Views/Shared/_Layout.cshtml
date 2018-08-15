@@ -8,7 +8,26 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="~/bower_components/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="~/bower_components/bootstrap/MisEstilos.css">  
+<!--<link rel="stylesheet" href="~/bower_components/bootstrap/MisEstilos.css">-->
+<style>
+.nobold
+{
+font-weight:normal !important;
+}
+.nopadding
+{
+padding-left:0px !important;
+padding-right:0px !important;
+}
+.text-center
+{
+text-align:center! important;
+}
+.textleft
+{
+text-align:left !important;
+}
+</style>
 <!-- Font Awesome -->
   <link rel="stylesheet" href="~/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -404,6 +423,75 @@
 <script src="~/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 <script src="~/bower_components/toastr/toastr.min.js"></script>
-<script src="~/bower_components/bootstrap/js/General.js"></script>
+<!--<script src="~/bower_components/bootstrap/js/General.js"></script>
+-->
+
+<script>
+    function fc_MsjSuccess(msj) {
+
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 4000,
+        };
+        toastr.success(msj, 'Indra');
+    }
+
+    function fc_MsjError(msj) {
+
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 4000,
+        };
+        toastr.error(msj, 'Indra');
+    }
+
+    function fc_MsjWarning(msj) {
+
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 4000,
+        };
+        toastr.warning(msj, 'Indra');
+    }
+
+    function ActualizarInicio() {
+        var nombre = $("#nom_usuario").val();
+        var idperfil = $("#id_perfil").val();
+        $("#txtNombreUsuario").html(nombre);
+        $("#txtNombreUsuario2").html(nombre);
+
+        if (idperfil == "1") {
+            document.getElementById("li_1").style.display = '';
+            document.getElementById("li_2").style.display = 'none';
+        } else {
+            document.getElementById("li_1").style.display = 'none';
+            document.getElementById("li_2").style.display = '';
+        }
+    }
+
+    function SoloNumerico(eventObj) {
+        /*var tecla = (document.all) ? e.keyCode : e.which; var patron = /^[0-9]*$/; te = String.fromCharCode(tecla); if (!patron.test(te)) { (document.all) ? e.keyCode = 0 : e.which = 0; return false; } else return true; */
+        var key;
+        if (eventObj.keyCode)            // For IE
+            key = eventObj.keyCode;
+        else if (eventObj.Which)
+            key = eventObj.Which;       // For FireFox
+        else
+            key = eventObj.charCode;    // Other Browser              
+
+        if (key >= 48 && key <= 57) { }
+        else if (key == 8 || key == 9 || key == 37) { }
+        else {
+            return false;
+        }
+
+    }
+</script>
 </body>
 </html>
