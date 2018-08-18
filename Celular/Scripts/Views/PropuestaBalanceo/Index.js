@@ -244,7 +244,7 @@ function iniciarBalanceo(){
             }
         }
     }
-    var entidad_ = { lista_parametros: datos , portafolio : $("#id_portafolio").val() };
+    var entidad_ = { lista_parametros: datos , portafolio : $("#id_portafolio").val() , id_user : $("#id_usuario").val() };
     var url_ = $("#UrlServicio").val() + '/api/portafolio/realizarBalanceo';
     $.ajax({
         url: url_,
