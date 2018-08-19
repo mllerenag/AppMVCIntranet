@@ -45,10 +45,10 @@ function Combo_Recurso(objeto){
 function buscarPropuestas(){
     var retorno = '<table id="tbl_Propuestas" style="width:100%" class="table table-bordered table-hover">';
     retorno += '<thead>';
-    retorno += '<th>Código</th>';
+    retorno += '<th># Propuesta</th>';
     retorno += '<th>Código Componente</th>';
     retorno += '<th>Componente</th>';
-    retorno += '<th>Tipo Recurso</th>';
+    retorno += '<th>Recurso</th>';
     retorno += '<th>Cant. S.</th>';
     retorno += '<th>Cant. B.</th>';
     retorno += '<th>Prioridad</th>';
