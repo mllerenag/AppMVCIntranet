@@ -16,6 +16,9 @@ namespace Celular.Controllers
             if (Session["usuario"] != null)
             {
                 Inicio entidad = new Inicio();
+                entidad.usuario = int.Parse(Session["usuario"].ToString());
+                entidad.nombreusuario = Session["nombreusuario"].ToString();
+
                 return View(entidad);
             }
             else
@@ -23,7 +26,5 @@ namespace Celular.Controllers
                 return Redirect("./Login");
             }
         }
-
-
     }
 }
