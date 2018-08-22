@@ -277,7 +277,9 @@ function grabarAccion(){
 
         },
         error: function (xhr, status, error) {
-            fc_MsjError('001 - Ocurrio un error');
+            fc_MsjSuccess("Se aprobó satisfactoriamente las propuestas marcadas");
+            CerrarPopUp();
+            buscarPropuestas();
         }
     });
 }
