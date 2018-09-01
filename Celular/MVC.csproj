@@ -7334,7 +7334,6 @@
     <Content Include="dist\css\adminlte.min.css.map" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
-    <None Include="Properties\PublishProfiles\Publicacion_MVC_MOvil.pubxml" />
     <None Include="Properties\PublishProfiles\webindra - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\webindra - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -7359,7 +7358,9 @@
     <Content Include="Scripts\Views\Inicio\Index.js" />
     <Content Include="Scripts\Views\PropuestaBalanceo\Index.js" />
     <Content Include="Scripts\Views\SeleccionPortafolio\Index.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
