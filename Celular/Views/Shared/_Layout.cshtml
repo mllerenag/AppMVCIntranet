@@ -177,6 +177,17 @@ text-align:left !important;
             <li class="active"><a href="./Programa"><i class="fa fa-circle-o"></i>Administrar Programa</a></li>
           </ul>
         </li> 
+        <li id='li_6' class="treeview" style="display:none">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Proyecto</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="./Proyecto"><i class="fa fa-circle-o"></i>Administrar Proyecto</a></li>
+          </ul>
+        </li> 
         <li id='li_4' class="treeview" style="display:none">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Solicitud</span>
@@ -493,6 +504,7 @@ text-align:left !important;
         } else  if(idperfil == "2"){
             document.getElementById("li_2").style.display = '';
             document.getElementById("li_3").style.display = '';
+            document.getElementById("li_6").style.display = '';
         } else if (idperfil == "3") {
             document.getElementById("li_5").style.display = '';
         } else if (idperfil == "4") {
