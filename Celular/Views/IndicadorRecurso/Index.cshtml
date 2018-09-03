@@ -1,0 +1,168 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+    Indicadores
+    <small>Recurso</small>
+    </h1>
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li><a href="#">Indicadore</a></li>
+    <li class="active">Recurso</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Filtros de Búsqueda</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                    <div class="box-body">
+                    <div class="form-horizontal" >
+                    <div class="form-group" style="display:none">
+                        <label  class="col-sm-2 control-label">Tipo de Gráfico</label>
+                        <div class="col-sm-3">
+                            <select id="vl_TipoGrafico" class="form-control">
+                                <option value="1">Recursos de Portafolios</option>
+                                <!--<option value="2">Disponibilidad de Recursos</option>-->
+                                <option value="3">Recursos de Componente</option>
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <div id="dvFiltros_1">
+                            <label  class="col-sm-2 control-label">Portafolios</label>
+                            <div class="col-sm-3">
+                               <select class="selectpicker" id="cboPortafolios_Multiple"
+                                        multiple data-live-search="true" title="Todos"
+                                        data-live-search-placeholder="Search"  data-actions-box="true" >
+                               </select>
+                            </div>
+                        </div>
+                        <div id="dvFiltros_2">
+                            <label  class="col-sm-2 control-label">Portafolio</label>
+                            <div class="col-sm-3">
+                               <select class="form-control" id="cboPortafolio">
+                                    <option value="0">--Seleccionar--</option>
+                               </select>
+                            </div>
+                        </div>
+                        <div id="dvFiltros_3">
+                            <label  class="col-sm-1 control-label">Componentes</label>
+                            <div class="col-sm-3">
+                               <select class="selectpicker" id="cboComponentes_Multiple"
+                                        multiple data-live-search="true" title="Todos"
+                                        data-live-search-placeholder="Search"  data-actions-box="true" >
+                               </select>
+                            </div>
+                        </div>
+                        <div id="dvFiltros_4">
+                            <label  class="col-sm-1 control-label">Recursos</label>
+                            <div class="col-sm-2">
+                               <select class="selectpicker" id="cboRecursos_Multiple"
+                                        multiple data-live-search="true" title="Todos"
+                                        data-live-search-placeholder="Search"  data-actions-box="true" >
+                               </select>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                    <button type="button" onclick="buscarRecursos()" class="btn btn-info pull-right">Buscar</button>
+                    </div>
+                    <!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+
+    <div id="dvGraficos">
+       
+    </div
+
+</section>
+
+<div id="myModal1" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_Detalle();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title" id="h4Modal1"></h4>
+            </div>
+            <div class="modal-body" id="dvDetalle_Data" style="max-height:500px;overflow-x:auto">
+            </div>
+             <div class="modal-footer">
+                <button type="button" id="btnGrafico1" title="Consumo" onmousedown="javascript:GraficoDetalle(1);" class="btn btnDefault btn-sm btn-default">Consumo</button>
+                <button type="button" id="btnGrafico2" title="Disponibiliad" onmousedown="javascript:GraficoDetalle(2);" class="btn btnDefault btn-sm btn-default">Disponibilidad</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal2" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_Grafico();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title" id="h4Modal2"></h4>
+            </div>
+            <div class="modal-body" id="dvGrafico_detalle" style="height:350px">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal3" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_Componente_Grafico();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title" id="h4Modal3"></h4>
+            </div>
+            <div class="modal-body" id="dvComponente_Grafico" style="height:350px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnGrafico1" title="Ver Detalle" onmousedown="javascript:VerConsumoComponente_Detalle();" class="btn btnDefault btn-sm btn-default">Ver Detalle</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div id="myModal4" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>            
+    <div class="modal-dialog">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp_Componente_Detalle();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title" id="h4Modal4"></h4>
+            </div>
+            <div class="modal-body" id="dvComponente_Detalle" style="max-height:500px;overflow-x:auto">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="~/Content/vendor.min.js"></script>
+<script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/Views/IndicadorRecurso/Index.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />

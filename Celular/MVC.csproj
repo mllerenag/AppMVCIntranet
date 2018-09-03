@@ -165,6 +165,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AsignarController.cs" />
+    <Compile Include="Controllers\IndicadorRecursoController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\EvaluarPropuestaController.cs" />
     <Compile Include="Controllers\SeleccionPortafolio_EvaluacionController.cs" />
@@ -7350,6 +7351,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Views\Asignar\AgregarEditar.js" />
     <Content Include="Scripts\Views\Asignar\Index.js" />
+    <Content Include="Scripts\Views\IndicadorRecurso\Index.js" />
     <Content Include="Scripts\Views\EvaluarPropuesta\Index.js" />
     <Content Include="Scripts\Views\Proyecto\Index.js" />
     <Content Include="Scripts\Views\SeleccionPortafolio_Evaluacion\Index.js" />
@@ -7386,6 +7388,7 @@
     <Content Include="Views\SeleccionPortafolio_Evaluacion\Index.cshtml" />
     <Content Include="Views\EvaluarPropuesta\Index.cshtml" />
     <Content Include="Views\Proyecto\Index.cshtml" />
+    <Content Include="Views\IndicadorRecurso\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adjuntos\" />
