@@ -167,6 +167,7 @@
     <Compile Include="Controllers\AsignarController.cs" />
     <Compile Include="Controllers\IndicadorRecursoController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
+    <Compile Include="Controllers\PlanificarController.cs" />
     <Compile Include="Controllers\EvaluarPropuestaController.cs" />
     <Compile Include="Controllers\SeleccionPortafolio_EvaluacionController.cs" />
     <Compile Include="Controllers\ProgramaController.cs" />
@@ -7353,6 +7354,7 @@
     <Content Include="Scripts\Views\Asignar\Index.js" />
     <Content Include="Scripts\Views\IndicadorRecurso\Index.js" />
     <Content Include="Scripts\Views\EvaluarPropuesta\Index.js" />
+    <Content Include="Scripts\Views\Planificar\Index.js" />
     <Content Include="Scripts\Views\Proyecto\Index.js" />
     <Content Include="Scripts\Views\SeleccionPortafolio_Evaluacion\Index.js" />
     <Content Include="Scripts\Views\Programa\Index.js" />
@@ -7388,6 +7390,7 @@
     <Content Include="Views\SeleccionPortafolio_Evaluacion\Index.cshtml" />
     <Content Include="Views\EvaluarPropuesta\Index.cshtml" />
     <Content Include="Views\Proyecto\Index.cshtml" />
+    <Content Include="Views\Planificar\Index.cshtml" />
     <Content Include="Views\IndicadorRecurso\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
