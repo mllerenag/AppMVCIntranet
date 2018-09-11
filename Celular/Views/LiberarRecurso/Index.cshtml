@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 id="h3_NomPortafolio" class="box-title">Portafolio</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Cod</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="vl_txtCodigoPortafolio" placeholder="Cod Portafolio" onkeypress="return SoloNumerico(event);">
+                        </div>
+                        <label class="col-sm-2 control-label">Nombre Portafolio</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="vl_txtNombrePortafolio" placeholder="Componente" maxlength="6">
+                        </div>
+                   
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="button" onclick="buscarPropuestas()" class="btn btn-info pull-right">Buscar</button>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista de Propuestas</h3>
+                </div>
+                <div class="box-body" id="dvTablaPropuestas" style="overflow-x:auto">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="dvFooter">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-footer">
+
+                    <button type="button" onclick="AprobarPropuestas(1)" style="margin-left:10px;margin-right:10px" class="btn btn-success pull-right">Aprobar Propuestas</button>
+                    <button type="button" onclick="AprobarPropuestas(0)" style="margin-left:10px;margin-right:10px" class="btn btn-danger pull-right">Desaprobar Propuestas</button>
+                    <button type="button" onclick="Regresar()" style="margin-left:10px;margin-right:10px" class="btn btn-info pull-right">Regresar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="myModal1" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>
+    <div class="modal-dialog">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title">Confirmación</h4>
+            </div>
+            <div class="modal-body" style="max-height:300px;overflow-x:auto">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-horizontal" style="margin-right:20px;margin-left:20px">
+                            <div class="form-group">
+                                <div class="alert alert-danger col-sm-12" id="dvAlerta"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text-center" id="dvTabla"></div>
+                            </div>
+                            <div class="form-group" id="dvMotivoRechazo">
+                                <label class="control-label col-md-3">Motivo Rechazo:</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="txtMotivoRechazo" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnDenegar" title="Cancelar" onmousedown="javascript:CerrarPopUp();" class="btn btnDefault btn-sm btn-default">Cancelar</button>
+                <button type="button" id="btnConfirmar" title="Aceptar" onmousedown="javascript:grabarAccion();" class="btn btnDefault btn-sm btn-success">Grabar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/vendor.min.js"></script>
+<!-- <script src="~/Scripts/Views/LiberarRecurso/Index.js"></script>-->
+<script>
+                        /*
+
+                        */
+</script>

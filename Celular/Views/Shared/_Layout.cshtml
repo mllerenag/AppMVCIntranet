@@ -681,6 +681,17 @@ select.selectpicker {
             <li class="active"><a href="./Planificar"><i class="fa fa-circle-o"></i>Recursos</a></li>
           </ul>
         </li> 
+          <li id='li_9' class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Recursos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="./SeleccionPortafolio_liberar"><i class="fa fa-circle-o"></i>Liberar recursos</a></li>
+          </ul>
+        </li> 
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -979,6 +990,7 @@ select.selectpicker {
         } else if (idperfil == "3") {
             document.getElementById("li_5").style.display = '';
             document.getElementById("li_7").style.display = '';
+            document.getElementById("li_9").style.display = '';
         } else if (idperfil == "4") {
             document.getElementById("li_4").style.display = '';
         }
