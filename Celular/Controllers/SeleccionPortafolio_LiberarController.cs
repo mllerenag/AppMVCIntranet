@@ -26,7 +26,7 @@ namespace Celular.Controllers
                 return Redirect("./Login");
             }
         }
-        public ActionResult IrAEvaluacion(int prm, string nom)
+        public ActionResult IrALiberarRecurso(int prm, string nom)
         {
             Session["portafolio"] = prm;
             Session["portafolio_name"] = nom;

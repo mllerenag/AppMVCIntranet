@@ -91,7 +91,7 @@ function retornarRegistro(resultado){
     retorno += '<td>' + resultado.codigo + '</td>';
     retorno += '<td>' + resultado.nombre + '</td>';
     retorno += '<td>' + resultado.nro_propuestas +'</td>';
-    retorno += '<td>' + '<button type="button" onclick="redirectToEvaluacion(' +  resultado.codigo_portafolio + ',\'' + resultado.nombre + '\');" class="btn btn-primary">Propuestas de Balanceo</button></td>';
+    retorno += '<td>' + '<button type="button" onclick="redirectToEvaluacion(' +  resultado.codigo_portafolio + ',\'' + resultado.nombre + '\');" class="btn btn-primary">Revisar</button></td>';
     retorno += '</tr>';
     return retorno;
 }

@@ -41,7 +41,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    @Html.Hidden("UrlServicioSeleccion", Url.Action("IrAEvaluacion", "SeleccionPortafolio_Evaluacion"))
+                    @Html.Hidden("UrlServicioSeleccion", Url.Action("IrALiberarRecurso", "SeleccionPortafolio_Liberar"))
                     <button type="button" onclick="buscarPortafolios()" class="btn btn-info pull-right">Buscar</button>
                 </div>
                 <!-- /.box-footer -->
@@ -65,4 +65,4 @@
 </section>
 
 <script src="~/Content/vendor.min.js"></script>
-<script src="~/Scripts/Views/SeleccionPortafolio_Evaluacion/Index.js"></script>
+<script src="~/Scripts/Views/SeleccionPortafolio_Liberar/Index.js"></script>
