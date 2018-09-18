@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Recursos
+        <small>Liberar Recursos</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#">Recursos</a></li>
+        <li class="active">Liberar Recursos</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Filtros de Búsqueda</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Codigo</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="txtCodigo" placeholder="Codigo">
+                        </div>
+                        <label class="col-sm-2 control-label">Nombre</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="txtNombre" placeholder="Nombre">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    @Html.Hidden("UrlServicioSeleccion", Url.Action("IrALiberarRecurso", "SeleccionPortafolio_Liberar"))
+                    <button type="button" onclick="buscarPortafolios()" class="btn btn-info pull-right">Buscar</button>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista de Portafolio</h3>
+                </div>
+                <div class="box-body" id="dvTablaPortafolios" style="overflow-x:auto">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/vendor.min.js"></script>
+<script src="~/Scripts/Views/SeleccionPortafolio_Liberar/Index.js"></script>

@@ -1,0 +1,152 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 id="h3_NomPortafolio" class="box-title">Portafolio @Session["portafolio_name"].ToString()</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Código</label>
+                        <div class="col-sm-2">
+                            @Session["portafolio"].ToString()
+                            <input type="hidden" class="form-control" id="vl_txtCodigoPortafolio" placeholder="Código" onkeypress="return SoloNumerico(event);">
+                        </div>
+                        <label class="col-sm-2 control-label">Nombre</label>
+                        <div class="col-sm-2">
+                            @Session["portafolio_name"].ToString()
+                            <input type="hidden" class="form-control" id="vl_txtNombrePortafolio" placeholder="Nombre" maxlength="6">
+                        </div>
+                        <label class="col-sm-2 control-label">Descripción</label>
+                        <div class="col-sm-1">
+                            <input type="hidden" class="form-control" id="vl_txtDescripcionPortafolio" placeholder="Descripción" maxlength="6">
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <!--<button type="button" onclick="buscarPropuestas()" class="btn btn-info pull-right">Buscar</button>-->
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista Recursos necesarios</h3>
+                </div>
+                <div class="box-body" id="dvTablaRecursos" style="overflow-x:auto">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista de Componentes Cerrados</h3>
+                </div>
+                <div class="box-body" id="dvTablaComponentes" style="overflow-x:auto">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lista Recursos de componentes cerrados</h3>
+                </div>
+                <div class="box-body" id="dvTablaRecursosComponente" style="overflow-x:auto">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row" id="dvFooter">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-footer">
+                    <!--
+
+                    <button type="button" onclick="AprobarPropuestas(1)" style="margin-left:10px;margin-right:10px" class="btn btn-success pull-right">Aprobar Propuestas</button>
+                    <button type="button" onclick="AprobarPropuestas(0)" style="margin-left:10px;margin-right:10px" class="btn btn-danger pull-right">Desaprobar Propuestas</button>
+                    <button type="button" onclick="Regresar()" style="margin-left:10px;margin-right:10px" class="btn btn-info pull-right">Regresar</button>
+                        
+                    <button type="button" onclick="alert('Opcion no implementada')" style="margin-left:10px;margin-right:10px" class="btn btn-info pull-right">Liberar</button>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="myModal1" class="modal" style="cursor: move;display:none" data-backdrop='static' data-keyboard='false'>
+    <div class="modal-dialog">
+        <div class="modal-content" id="PopUp">
+            <div class="modal-header">
+                <button type="button" id="btnCerrarPopUp" title="Cerrar" onmousedown="javascript:CerrarPopUp();" style="float:right" class="btn btnDefault btn-sm btn-danger btnClose"><i class="fa fa-close "></i>  Cerrar</button>
+                <h4 class="modal-title">Confirmación</h4>
+            </div>
+            <div class="modal-body" style="max-height:300px;overflow-x:auto">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-horizontal" style="margin-right:20px;margin-left:20px">
+                            <div class="form-group">
+                                <div class="alert alert-danger col-sm-12" id="dvAlerta"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text-center" id="dvTabla"></div>
+                            </div>
+                            <div class="form-group" id="dvMotivoRechazo">
+                                <label class="control-label col-md-3">Motivo Rechazo:</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="txtMotivoRechazo" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnDenegar" title="Cancelar" onmousedown="javascript:CerrarPopUp();" class="btn btnDefault btn-sm btn-default">Cancelar</button>
+                <button type="button" id="btnConfirmar" title="Aceptar" onmousedown="javascript:grabarAccion();" class="btn btnDefault btn-sm btn-success">Grabar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="nom_portafolio" value="@Session["portafolio_name"].ToString()" />
+<input type="hidden" id="id_portafolio" value="@Session["portafolio"].ToString()" />
+
+<script src="~/Content/vendor.min.js"></script>
+<script src="~/Scripts/Views/LiberarRecurso/Index.js"></script>
+<script>
+                            /*
+
+                            */
+</script>

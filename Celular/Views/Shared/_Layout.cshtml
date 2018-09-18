@@ -670,7 +670,7 @@ select.selectpicker {
             <li class="active"><a href="./IndicadorRecurso"><i class="fa fa-circle-o"></i>Recursos</a></li>
           </ul>
         </li> 
-	<li id='li_8' class="treeview">
+	<li id='li_8' class="treeview" style="display:none">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Planificar</span>
             <span class="pull-right-container">
@@ -679,6 +679,17 @@ select.selectpicker {
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="./Planificar"><i class="fa fa-circle-o"></i>Recursos</a></li>
+          </ul>
+        </li> 
+          <li id='li_9' class="treeview" style="display:none">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Recursos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="./SeleccionPortafolio_liberar"><i class="fa fa-circle-o"></i>Liberar recursos</a></li>
           </ul>
         </li> 
       </ul>
@@ -976,6 +987,7 @@ select.selectpicker {
             document.getElementById("li_2").style.display = '';
             document.getElementById("li_3").style.display = '';
             document.getElementById("li_6").style.display = '';
+            document.getElementById("li_9").style.display = '';
         } else if (idperfil == "3") {
             document.getElementById("li_5").style.display = '';
             document.getElementById("li_7").style.display = '';
