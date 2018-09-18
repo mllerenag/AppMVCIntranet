@@ -570,6 +570,29 @@ function GrabarDatos(){
             fc_MsjError("La Fecha Inicio Programa no puede ser mayor a la Fecha Fin Programa");
             return;
         }
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if(dd<10){
+            dd='0'+dd;
+        } 
+        if(mm<10){
+            mm='0'+mm;
+        } 
+        var fecha_actual = dd+'/'+mm+'/'+yyyy
+
+        if(Date.parse(fecha_actual)>=Date.parse(fe_inicio)){
+            fc_MsjError("La Fecha Inicio tiene que ser mayor a la Actual");
+            return;
+        }   
+
+        if(Date.parse(fecha_actual)>=Date.parse(fe_inicio) && Date.parse(fecha_actual)<=Date.parse(fe_fin)){
+            fc_MsjError("La Fecha Inicio y Fin de Programa debe estar fuera de la fecha Actual");
+            return;
+        }        
+        
     }
 
     if(nombre.trim() == ""){
