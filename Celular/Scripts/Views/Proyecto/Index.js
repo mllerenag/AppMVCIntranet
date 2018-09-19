@@ -439,11 +439,28 @@ function GrabarDatos(){
     var usr = $("#id_usuario").val();
 
 
+    
     if (fe_inicio != "" && fe_fin != ""){
-        if(Date.parse(fe_fin) < Date.parse(fe_inicio)){
+        
+
+        var fecha_actual = new Date();
+        var dt_inicio = new Date(fe_inicio.substring(6,10),fe_inicio.substring(3,5),fe_inicio.substring(0,2));
+        var dt_fin = new Date(fe_fin.substring(6,10),fe_fin.substring(3,5),fe_fin.substring(0,2));
+
+        if(dt_fin < dt_inicio){
             fc_MsjError("La Fecha Inicio Proyecto no puede ser mayor a la Fecha Fin Proyecto");
             return;
         }
+
+        if(fecha_actual >=dt_inicio){
+            fc_MsjError("La Fecha Inicio tiene que ser mayor a la Actual");
+            return;
+        }   
+
+        if(fecha_actual  >=dt_inicio && fecha_actual <= dt_fin){
+            fc_MsjError("La Fecha Inicio y Fin de Proyecto debe estar fuera de la fecha Actual");
+            return;
+        } 
     }
 
     if(nombre.trim() == ""){
