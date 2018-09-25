@@ -444,8 +444,16 @@ function GrabarDatos(){
         
 
         var fecha_actual = new Date();
-        var dt_inicio = new Date(fe_inicio.substring(6,10),fe_inicio.substring(3,5),fe_inicio.substring(0,2));
-        var dt_fin = new Date(fe_fin.substring(6,10),fe_fin.substring(3,5),fe_fin.substring(0,2));
+        //var dt_inicio = new Date(fe_inicio.substring(6,10),fe_inicio.substring(3,5),fe_inicio.substring(0,2));
+        //var dt_fin = new Date(fe_fin.substring(6,10),fe_fin.substring(3,5),fe_fin.substring(0,2));
+        var dt1  = parseInt(fe_inicio.substring(0,2),10);
+        var mon1 = parseInt(fe_inicio.substring(3,5),10);
+        var yr1  = parseInt(fe_inicio.substring(6,10),10);
+        var dt2  = parseInt(fe_fin.substring(0,2),10);
+        var mon2 = parseInt(fe_fin.substring(3,5),10);
+        var yr2  = parseInt(fe_fin.substring(6,10),10);
+        var dt_inicio = new Date(yr1, mon1-1, dt1);
+        var dt_fin = new Date(yr2, mon2-1, dt2);
 
         if(dt_fin < dt_inicio){
             fc_MsjError("La Fecha Inicio Proyecto no puede ser mayor a la Fecha Fin Proyecto");
